@@ -6,12 +6,9 @@ import numpy as np
 import math
 import glob
 
-"""
-输入：图片路径(path+filename)，裁剪获得小图片的列数、行数（也即宽、高）
-输出：无
-"""
+
 def crop_one_picture(path,filename,cols,rows):
-    img=cv2.imread(path+filename,1)##读取彩色图像，图像的透明度(alpha通道)被忽略，默认参数;灰度图像;读取原始图像，包括alpha通道;可以用1，0，-1来表示
+    img=cv2.imread(path+filename,1)#
     # img=cv2.imread(path+filename,-1) # mask
     # img= cv2.copyMakeBorder(img, top=97, bottom=98, left=152, right=153,
     #                     borderType=cv2.BORDER_CONSTANT, value=[0, 0, 0]) # 1
@@ -143,9 +140,9 @@ def crop_one_picture(path,filename,cols,rows):
     # img= cv2.copyMakeBorder(img, top=1, bottom=2, left=66, right=67,
     #                     borderType=cv2.BORDER_CONSTANT, value=[0, 0, 0]) # 20
     
-    sum_rows=img.shape[0]   #高度
-    sum_cols=img.shape[1]    #宽度
-    save_path=path+"\\crop{0}_{1}\\".format(cols,rows)  #保存的路径
+    sum_rows=img.shape[0]   
+    sum_cols=img.shape[1]   
+    save_path=path+"\\crop{0}_{1}\\".format(cols,rows) 
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     print("裁剪所得{0}列图片，{1}行图片.".format(int(sum_cols/cols),int(sum_rows/rows))) 
@@ -160,7 +157,7 @@ def crop_one_picture(path,filename,cols,rows):
     
 if __name__ == '__main__':
 
-    path='G:\\CHLandsat8\\LandsatNC\\Train\\patch\\'   #要裁剪的图片所在的文件夹
+    path='G:\\CHLandsat8\\LandsatNC\\Train\\patch\\'   
     picture_names = sorted(glob.glob(path  + '*.png'))
     num = 0
     for picture_name in picture_names:
